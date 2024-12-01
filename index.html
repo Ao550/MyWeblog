@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyWeblog</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    body{
+      
+      background-image:url(/MyWeblog/2.jpg);
+      background-size:cover;
+      
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-color: rgb(219, 225, 232); 
+      
+    }
+    ::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
+    #header{
+      height: 52px;
+      width: 100%;
+      background-color: rgb(0, 0, 0);
+      color: white;
+      z-index: 20;
+    }
+    #headerText{
+      line-height: 52px;
+      text-align: center;
+      font-size: 22px;
+      background-color: rgba(122, 134, 130, 0.459);
+      margin-left: 30px;
+      
+    }
+    @media screen and (min-height:300px){
+      #welcomer{top: 25vh;}
+    }
+    @media screen and (max-height:299px){
+      #welcomer{top: 70px;}
+    }
+    #welcomer{
+      position:absolute;
+      
+      height: 50vh;
+      width: 70vw;
+      margin-left: 15vw;
+      background-color: rgba(240, 255, 255, 0.596);
+      z-index: 10;
+      backdrop-filter:blur(9px);
+
+      
+      
+      font-size: 28px;
+      
+      text-align: center;
+      
+      padding-top: 30px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-family: "楷体";
+    
+    }
+    
+    #main{
+      width: 100%;
+      height:100vh;
+      position: absolute;
+      top: 100vh;
+      
+      background-color: rgba(240, 255, 255, 0.5);
+      backdrop-filter:blur(9px);
+      
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <span id="headerText">Ao-Weblog</span>
+  </div>
+  <div id="welcomer">
+    
+  </div>
+  <div id="main">
+    信息维护中.....
+  </div>
+  <script>
+    let text = document.querySelector('#welcomer');
+    
+    let texts ='你好！<br>欢迎你的访问<br><br>下面分享了一系列免费且实用的工具<br><br>希望能帮助您轻松完成各种任务<br><br>↓';
+    let a=1;
+    let i=0;
+
+    function player (){
+      console.log("player");
+      i++;
+
+      if(i>texts.length){
+        clearInterval(fortext);
+        text.innerHTML=texts.substring(0,i-1);
+        console.log("*****");
+        return;
+      }
+
+      text.innerHTML=texts.substring(0,i);
+      console.log(i+" ->"+texts.substring(0,i))
+       
+      a=1;
+    }
+
+    function waiter (){
+
+      console.log("waiter");
+      text.innerHTML=texts.substring(0,i)+"_";
+      a=2;
+    }
+
+    function selecter(){
+      if(a==1){
+        waiter();
+      }else if(a==2){
+        player();
+      }
+    }
+    
+    let fortext = setInterval(selecter,100)
+    
+  </script>
+</body>
+</html>
